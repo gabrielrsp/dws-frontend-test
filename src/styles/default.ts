@@ -26,18 +26,13 @@ export const defaultTheme = {
     },
   },
 
-  typography: {
-    bodyLarge: {
+ typography: {
+    large: {
       fontSize: '1rem',
       lineHeight: '150%',
       fontWeight: 400,
     },
-    bodyLargeSemibold: {
-      fontSize: '1rem',
-      lineHeight: '150%',
-      fontWeight: 600,
-    },
-    bodySmall: {
+    small: {
       fontSize: '0.875rem',
       lineHeight: '150%',
       fontWeight: 400,

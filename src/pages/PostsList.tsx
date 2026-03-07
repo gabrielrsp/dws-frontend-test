@@ -1,3 +1,3 @@
-export function PostsList () {
+export function PostsList() {
   return <h1>Posts List</h1>
 }

@@ -26,7 +26,7 @@ export const defaultTheme = {
     },
   },
 
- typography: {
+  typography: {
     large: {
       fontSize: '1rem',
       lineHeight: '150%',

@@ -4,7 +4,7 @@ import { defaultTheme } from './styles/default'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
 
-export function App () {
+export function App() {
   return (
     <>
       <ThemeProvider theme={defaultTheme}>

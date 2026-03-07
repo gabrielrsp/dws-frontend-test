@@ -1,16 +1,17 @@
 import { HeaderContainer, Divider, LogoContainer, Text } from './styles'
+import { SearchInput } from '../SearchInput'
 import logoDentsu from '../../assets/logo-dentsu.svg'
 
-export function Header () {
+export function Header() {
   return (
     <>
       <HeaderContainer>
         <LogoContainer>
-          <img src={logoDentsu} alt="dentsu" width={70} />
-          <Text variant="small">world services</Text>
+          <img src={logoDentsu} alt="dentsu" width={80} />
+          <Text variant="caption">world services</Text>
         </LogoContainer>
         <nav>
-          <input type="text" placeholder="SEARCH" />
+          <SearchInput />
         </nav>
       </HeaderContainer>
       <Divider />

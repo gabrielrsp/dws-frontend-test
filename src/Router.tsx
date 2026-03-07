@@ -3,7 +3,7 @@ import { PostsList } from './pages/PostsList'
 import { PostDetails } from './pages/PostDetails'
 import { DefaultLayout } from './layouts/DefaultLayout'
 
-export function Router () {
+export function Router() {
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout />}>

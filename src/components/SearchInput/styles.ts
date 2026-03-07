@@ -31,6 +31,7 @@ export const StyledSearchInput = styled.input`
   border: none;
   outline: none;
   margin-left: 16px;
+  width: 460px;
 
   background: ${({ theme }) => theme.colors.neutrals.lightest};
   color: ${({ theme }) => theme.colors.neutrals.extraDark};

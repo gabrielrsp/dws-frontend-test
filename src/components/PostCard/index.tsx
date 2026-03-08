@@ -19,7 +19,9 @@ export const PostCard = ({ post }: PostCardProps) => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(`/details/${post.id}`)
+    navigate(`/details/${post.id}`, {
+      state: { post },
+    })
   }
 
   return (

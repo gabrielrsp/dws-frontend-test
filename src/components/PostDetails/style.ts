@@ -1,13 +1,31 @@
 import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
-  max-width: 1200px;
+  max-width: 780px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px; 
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  align-items: flex-start; 
+  gap: 24px;
 `;
+
+export const ArticleHeader = styled.header`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px; 
+`;
+
+export const MainTitle = styled.h1`
+  color: ${props => props.theme.colors.neutrals.darkest};
+  font-size: 2.5rem; 
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+`;
+
 
 export const BackButton = styled.button`
   width: fit-content;
@@ -22,17 +40,6 @@ export const BackButton = styled.button`
   gap: 4px;
   
   &:before { content: '←'; }
-`;
-
-export const ArticleHeader = styled.header`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-export const MainTitle = styled.h1`
-  color: ${props => props.theme.colors.neutrals.darkest};
-  max-width: 800px;
 `;
 
 export const AuthorInfo = styled.div`
@@ -59,7 +66,7 @@ export const AuthorInfo = styled.div`
 
 export const MainImage = styled.img`
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 21 / 9; 
   object-fit: cover;
   border-radius: 16px;
 `;
@@ -71,7 +78,7 @@ export const Content = styled.article`
   column-count: 1;
 
   @media (min-width: 1024px) {
-    column-count: 1; /* Ajustar conforme necessidade de leitura */
+    column-count: 1; 
     max-width: 900px;
   }
 `;

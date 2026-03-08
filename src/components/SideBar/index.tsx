@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   SidebarContainer,
   SidebarHeader,
@@ -7,33 +7,63 @@ import {
   FilterItem,
 } from './styles'
 import { Button } from '../Button'
+import { categoryService, authorService } from '../../services/postService'
+
+// Tipagens baseadas nos endpoints
+interface Category {
+  id: string
+  name: string
+}
+
+interface Author {
+  id: string
+  name: string
+}
 
 export const Sidebar = () => {
-  const mockCategories = [
-    'Category 1',
-    'Category 2',
-    'Category 3',
-    'Category 4',
-    'Category 5',
-  ]
-  const mockAuthors = [
-    'Author Lastname1',
-    'Author Lastname2',
-    'Author Lastname3',
-  ]
+  const [categories, setCategories] = useState<Category[]>([])
+  const [authors, setAuthors] = useState<Author[]>([])
+  const [loading, setLoading] = useState(true)
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedAuthors, setSelectedAuthors] = useState<string[]>([])
 
+  useEffect(() => {
+    async function loadFilters () {
+      try {
+        setLoading(true)
+        // Chamadas paralelas para otimizar performance
+        const [categoriesData, authorsData] = await Promise.all([
+          categoryService.getAll(),
+          authorService.getAll(),
+        ])
+        setCategories(categoriesData)
+        setAuthors(authorsData)
+      } catch (error) {
+        console.error('Erro ao carregar filtros:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadFilters()
+  }, [])
+
   const toggleFilter = (
-    item: string,
-    state: string[],
+    id: string,
     setState: React.Dispatch<React.SetStateAction<string[]>>,
   ) => {
     setState((prev) =>
-      prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item],
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
     )
   }
+
+  if (loading)
+    return (
+      <SidebarContainer>
+        <p>Loading filters...</p>
+      </SidebarContainer>
+    )
 
   return (
     <SidebarContainer>
@@ -43,35 +73,34 @@ export const Sidebar = () => {
 
       <Section>
         <SectionTitle>Category</SectionTitle>
-        {mockCategories.map((cat, index) => (
+        {categories.map((cat) => (
           <FilterItem
-            key={index}
-            active={selectedCategories.includes(cat)}
-            onClick={() =>
-              toggleFilter(cat, selectedCategories, setSelectedCategories)
-            }
+            key={cat.id}
+            active={selectedCategories.includes(cat.id)}
+            onClick={() => toggleFilter(cat.id, setSelectedCategories)}
           >
-            {cat}
+            {cat.name}
           </FilterItem>
         ))}
       </Section>
 
       <Section>
         <SectionTitle>Author</SectionTitle>
-        {mockAuthors.map((author, index) => (
+        {authors.map((author) => (
           <FilterItem
-            key={index}
-            active={selectedAuthors.includes(author)}
-            onClick={() =>
-              toggleFilter(author, selectedAuthors, setSelectedAuthors)
-            }
+            key={author.id}
+            active={selectedAuthors.includes(author.id)}
+            onClick={() => toggleFilter(author.id, setSelectedAuthors)}
           >
-            {author}
+            {author.name}
           </FilterItem>
         ))}
       </Section>
 
-      <Button variant="primary" onClick={() => console.log('Applied!')}>
+      <Button
+        variant="primary"
+        onClick={() => console.log({ selectedCategories, selectedAuthors })}
+      >
         Apply filters
       </Button>
     </SidebarContainer>

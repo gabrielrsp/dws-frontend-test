@@ -1,23 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SortContainer = styled.div`
   display: flex;
   align-items: center;
 
   span {
-      color: ${({ theme }) => theme.colors.neutrals.extraDark};
-      font-weight: 700;
+    color: ${({ theme }) => theme.colors.neutrals.extraDark};
+    font-weight: 700;
   }
 
   margin-left: auto;
-
-`;
+`
 
 export const SortButton = styled.button`
   display: flex;
   align-items: center;
-  gap: 6px;
-
+  gap: 8px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -49,4 +47,4 @@ export const SortButton = styled.button`
       color: ${({ theme }) => theme.colors.neutrals.extraLight}; // hover
     }
   }
-`;
+`

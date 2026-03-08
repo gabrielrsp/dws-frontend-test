@@ -4,8 +4,6 @@ export const PageHeaderContainer = styled.div`
   display: flex;
   padding: 8px 16px;
   background-color: transparent;
-
-
 `
 
 export const Title = styled.h2`
@@ -20,7 +18,7 @@ export const Title = styled.h2`
 
 export const HeaderActions = styled.div`
   display: flex;
-  gap: 8px; 
+  gap: 8px;
   width: 100%;
 `
 
@@ -32,8 +30,4 @@ export const FilterGroup = styled.div`
   @media (min-width: 1024px) {
     display: none;
   }
- 
 `
-
-
- 

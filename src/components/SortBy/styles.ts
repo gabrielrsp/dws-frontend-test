@@ -14,7 +14,7 @@ export const SortText = styled.span`
   @media (min-width: 768px) {
     display: inline;
   }
-`;
+`
 export const SortButton = styled.button`
   display: flex;
   align-items: center;

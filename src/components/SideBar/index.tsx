@@ -9,7 +9,6 @@ import {
 import { Button } from '../Button'
 import { categoryService, authorService } from '../../services/postService'
 
-// Tipagens baseadas nos endpoints
 interface Category {
   id: string
   name: string
@@ -32,7 +31,6 @@ export const Sidebar = () => {
     async function loadFilters () {
       try {
         setLoading(true)
-        // Chamadas paralelas para otimizar performance
         const [categoriesData, authorsData] = await Promise.all([
           categoryService.getAll(),
           authorService.getAll(),

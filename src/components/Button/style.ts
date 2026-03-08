@@ -45,7 +45,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
         border-color: ${props.theme.colors.secondary.dark};
         color: ${props.theme.colors.secondary.dark};
       }
-      
+
       svg {
         width: 16px;
         height: 16px;

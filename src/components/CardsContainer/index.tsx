@@ -1,30 +1,32 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useContext } from 'react'
+import { PostContext } from '../../contexts/PostContext'
 import { CardsWrapper, Grid } from './styles'
 import { PostCard } from '../PostCard'
-import { postService } from '../../services/postService' // Importando o serviço
+import { postService } from '../../services/postService'
 import type { Post } from '../../types/Posts'
 
-export function CardsContainer () {
-  const [posts, setPosts] = useState<Post[]>([])
-  const [loading, setLoading] = useState(true)
+export function CardsContainer() {
+  const { state, dispatch, filteredPosts } = useContext(PostContext)
 
   useEffect(() => {
-    async function fetchPosts () {
+    async function fetchPosts() {
+      if (state.allPosts.length > 0) return
+
       try {
-        setLoading(true)
+        dispatch({ type: 'SET_LOADING', payload: true })
         const data = await postService.getAll()
-        setPosts(data)
+
+        dispatch({ type: 'SET_POSTS', payload: data })
       } catch (error) {
         console.error('Erro ao buscar posts:', error)
-      } finally {
-        setLoading(false)
+        dispatch({ type: 'SET_LOADING', payload: false })
       }
     }
 
     fetchPosts()
-  }, [])
+  }, [dispatch, state.allPosts.length])
 
-  if (loading) {
+  if (state.loading) {
     return (
       <CardsWrapper>
         <p>Loading articles...</p>
@@ -35,10 +37,14 @@ export function CardsContainer () {
   return (
     <CardsWrapper>
       <Grid>
-        {posts.map((post: Post) => (
+        {filteredPosts.map((post: Post) => (
           <PostCard key={post.id} post={post} />
         ))}
       </Grid>
+
+      {filteredPosts.length === 0 && !state.loading && (
+        <p>No articles found for the selected filters.</p>
+      )}
     </CardsWrapper>
   )
 }

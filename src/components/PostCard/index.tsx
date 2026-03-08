@@ -32,7 +32,13 @@ export const PostCard = ({ post }: PostCardProps) => {
 
       <Content>
         <MetaData>
-          <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+          <span>
+            {new Date(post.createdAt).toLocaleDateString('en-US', {
+              month: 'short',
+              day: '2-digit',
+              year: 'numeric',
+            })}
+          </span>
 
           <span className="separator">•</span>
 

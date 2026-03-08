@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const BlogPageContainer = styled.div`
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   justify-content: space-between;
   padding: 16px 0;
 
@@ -10,4 +10,4 @@ export const BlogPageContainer = styled.div`
     padding: 20px;
     gap: 20px;
   }
-`;
+`

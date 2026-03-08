@@ -7,7 +7,7 @@ import {
 import { SortBy } from '../SortBy'
 import Dropdown from '../Dropdown'
 
-export function PageHeader () {
+export function PageHeader() {
   const categoryOptions = ['Category 1', 'Category 2', 'Category 3']
   const authorOptions = ['Author 1', 'Author 2', 'Author 3']
 

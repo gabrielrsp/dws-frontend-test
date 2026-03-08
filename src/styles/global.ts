@@ -8,14 +8,17 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 body {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 80% 30%, rgba(255, 180, 200, 0.8), transparent 30%),
-    radial-gradient(circle at 20% 50%, rgba(45, 212, 225, 0.4), transparent 20%),
-    radial-gradient(circle at 80% 90%, rgba(37, 99, 235, 0.3), transparent 35%),
-    #f0f0f2;
-}
-
+    background-color: #F8F9FB; 
+    background-image:
+      radial-gradient(at 80% 30%, rgba(255, 182, 219, 1) 0px, transparent 30%),
+      radial-gradient(at 15% 65%, rgba(122, 245, 337, 0.4) 0px, transparent 40%),
+      radial-gradient(at 85% 90%, rgba(181, 155, 255, 0.5) 0px, transparent 30%),
+      radial-gradient(at 85% 85%, rgba(158, 201, 255, 0.65) 0px, transparent 15%);
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
 
 body, input, textarea, button {
   font-family: 'Open Sans', sans-serif;

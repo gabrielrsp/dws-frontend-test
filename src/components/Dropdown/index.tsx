@@ -7,7 +7,7 @@ import {
   MenuItem,
 } from './styles'
 
-export function FilterDropdown ({ label, options }: any) {
+export function FilterDropdown({ label, options }: any) {
   const [isOpen, setIsOpen] = useState(false)
   const [selected, setSelected] = useState([])
   const dropdownRef = useRef(null) as any

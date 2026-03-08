@@ -1,5 +1,5 @@
 import { PostDetails } from '../components/PostDetails'
 
-export function PostPage () {
+export function PostPage() {
   return <PostDetails />
 }

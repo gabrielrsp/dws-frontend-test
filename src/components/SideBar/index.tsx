@@ -5,8 +5,8 @@ import {
   Section,
   SectionTitle,
   FilterItem,
-  ApplyButton,
 } from './styles'
+import { Button } from '../Button'
 
 export const Sidebar = () => {
   const mockCategories = [
@@ -71,9 +71,9 @@ export const Sidebar = () => {
         ))}
       </Section>
 
-      <ApplyButton onClick={() => console.log('Applied!')}>
+      <Button variant="primary" onClick={() => console.log('Applied!')}>
         Apply filters
-      </ApplyButton>
+      </Button>
     </SidebarContainer>
   )
 }

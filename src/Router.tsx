@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
 import { PostsList } from './pages/PostsList'
-import { PostDetails } from './pages/PostDetails'
+import { PostPage } from './pages/PostPage'
 import { DefaultLayout } from './layouts/DefaultLayout'
 
-export function Router() {
+export function Router () {
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<PostsList />}></Route>
-        <Route path="/details" element={<PostDetails />}></Route>
+        <Route path={'/details/:id'} element={<PostPage />}></Route>
       </Route>
     </Routes>
   )

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import {
   CardContainer,
   ImageContainer,
@@ -8,45 +9,42 @@ import {
   TagContainer,
   Tag,
 } from './styles'
+import type { Post } from '../../types/Posts'
 
 interface PostCardProps {
-  post: {
-    title: string
-    author: string
-    excerpt: string
-    category: string // ou string[] se tiver várias
-    imageUrl?: string
-    date?: string
-  }
+  post: Post
 }
 
 export const PostCard = ({ post }: PostCardProps) => {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate(`/details/${post.id}`)
+  }
+
   return (
-    <CardContainer>
+    <CardContainer onClick={handleClick} style={{ cursor: 'pointer' }}>
       <ImageContainer>
-        <img
-          src={
-            post.imageUrl ||
-            'https://pt.vecteezy.com/fotos-gratis/background?page=5'
-          }
-          alt={post.title}
-        />
+        <img src={post.thumbnail_url} alt={post.title} />
       </ImageContainer>
 
       <Content>
         <MetaData>
-          <span>{post.date || 'Jan 20, 2024'}</span>
+          <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+
           <span className="separator">•</span>
-          <span>{post.author}</span>
+
+          <span>{post.author.name}</span>
         </MetaData>
 
         <Title>{post.title}</Title>
 
-        <Excerpt>{post.excerpt}</Excerpt>
+        <Excerpt>{post.content.slice(0, 120)}...</Excerpt>
 
         <TagContainer>
-          <Tag>{post.category}</Tag>
-          <Tag>{post.category}</Tag>
+          {post.categories.map((category) => (
+            <Tag key={category.id}>{category.name}</Tag>
+          ))}
         </TagContainer>
       </Content>
     </CardContainer>

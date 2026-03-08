@@ -3,15 +3,18 @@ import styled from 'styled-components'
 export const SortContainer = styled.div`
   display: flex;
   align-items: center;
-
-  span {
-    color: ${({ theme }) => theme.colors.neutrals.extraDark};
-    font-weight: 700;
-  }
-
   margin-left: auto;
 `
 
+export const SortText = styled.span`
+  color: ${({ theme }) => theme.colors.neutrals.extraDark};
+  font-weight: 700;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline;
+  }
+`;
 export const SortButton = styled.button`
   display: flex;
   align-items: center;
@@ -29,7 +32,7 @@ export const SortButton = styled.button`
   }
 
   svg {
-    color: ${({ theme }) => theme.colors.accent1.medium}; // default
+    color: ${({ theme }) => theme.colors.accent1.medium};
     transition: color 0.2s ease;
   }
 

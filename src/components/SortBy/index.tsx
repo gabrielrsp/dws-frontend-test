@@ -1,10 +1,10 @@
-import { SortContainer, SortButton } from './styles'
+import { SortContainer, SortButton, SortText } from './styles'
 import { SortIcon } from '../../assets/SortIcon'
 
-export function SortBy() {
+export function SortBy () {
   return (
     <SortContainer>
-      <span>Sort by:</span>
+      <SortText>Sort by:</SortText>
       <SortButton>
         Newest first
         <SortIcon />

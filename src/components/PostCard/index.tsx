@@ -23,7 +23,7 @@ export const PostCard = ({ post }: PostCardProps) => {
   }
 
   return (
-    <CardContainer onClick={handleClick} style={{ cursor: 'pointer' }}>
+    <CardContainer onClick={handleClick} data-testid="post-card">
       <ImageContainer>
         <img src={post.thumbnail_url} alt={post.title} />
       </ImageContainer>

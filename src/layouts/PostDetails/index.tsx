@@ -4,7 +4,7 @@ import type { Post } from '../../types/Posts'
 import { PostCard } from '../../components/PostCard'
 import { Button } from '../../components/Button'
 import { ArrowLeft } from '../../assets/ArrowLeft'
-import { postService } from '../../services/postService' //
+import { postService } from '../../services/postService'
 import { toast } from 'react-toastify'
 
 import {
@@ -92,7 +92,7 @@ export const PostDetails = () => {
 
       <MainImage src={post.thumbnail_url} />
 
-      <Content>
+      <Content data-testid="post-content">
         {post.content.split('\n\n').map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}

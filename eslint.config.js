@@ -14,7 +14,6 @@ export default defineConfig([
   js.configs.recommended,
   ...tseslint.configs.recommended,
 
-  // converte config antigo da Rocketseat
   ...compat.extends('@rocketseat/eslint-config/react'),
 
   {

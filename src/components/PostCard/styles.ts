@@ -6,6 +6,7 @@ export const CardContainer = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   transition: transform 0.2s;
   border: 1px solid ${({ theme }) => theme.colors.neutrals.extraLight};
 

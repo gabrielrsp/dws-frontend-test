@@ -1,4 +1,10 @@
-import { HeaderContainer, Divider, LogoContainer, Text } from './styles'
+import {
+  HeaderContainer,
+  Divider,
+  LogoContainer,
+  Text,
+  LogoLink,
+} from './styles'
 import { SearchInput } from '../SearchInput'
 import logoDentsu from '../../assets/logo-dentsu.svg'
 
@@ -6,7 +12,7 @@ export function Header() {
   return (
     <>
       <HeaderContainer>
-        <Text
+        <LogoLink
           href="https://www.dentsu.com/?global=true"
           target="_blank"
           rel="noopener noreferrer"
@@ -15,7 +21,7 @@ export function Header() {
             <img src={logoDentsu} alt="dentsu" width={80} />
             <Text variant="caption">world services</Text>
           </LogoContainer>
-        </Text>
+        </LogoLink>
 
         <nav>
           <SearchInput />

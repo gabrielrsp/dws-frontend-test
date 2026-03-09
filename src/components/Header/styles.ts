@@ -22,17 +22,15 @@ export const Divider = styled.hr`
 
 export const LogoContainer = styled.div`
   display: flex;
-  gap: 3px;
   align-items: baseline;
   gap: 6px;
 `
 
 type TextVariant = 'large' | 'small' | 'caption'
 
-export const Text = styled.a<{ variant?: TextVariant }>`
-  text-decoration: none;
+export const Text = styled.span<{ variant?: TextVariant }>`
   color: ${({ theme }) => theme.colors.neutrals.darkest};
-  cursor: pointer;
+
   ${({ theme, variant = 'large' }) => {
     const t = theme.typography[variant]
 
@@ -42,4 +40,16 @@ export const Text = styled.a<{ variant?: TextVariant }>`
       font-weight: ${t.fontWeight};
     `
   }}
+`
+
+export const LogoLink = styled(Text).attrs({ as: 'a' })`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `

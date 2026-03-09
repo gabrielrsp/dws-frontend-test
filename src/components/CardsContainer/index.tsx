@@ -5,6 +5,7 @@ import { PostCard } from '../PostCard'
 import { postService } from '../../services/postService'
 import type { Post } from '../../types/Posts'
 import { toast } from 'react-toastify'
+import { LoadingSpinner } from '../LoadingSpinner'
 
 export function CardsContainer() {
   const { state, dispatch, filteredPosts } = useContext(PostContext)
@@ -33,7 +34,7 @@ export function CardsContainer() {
   if (state.loading) {
     return (
       <CardsWrapper>
-        <p>Loading articles...</p>
+        <LoadingSpinner />
       </CardsWrapper>
     )
   }

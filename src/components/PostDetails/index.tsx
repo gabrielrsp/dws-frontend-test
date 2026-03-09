@@ -16,6 +16,7 @@ import {
   LatestArticlesSection,
   Grid,
 } from './style'
+import { LoadingSpinner } from '../LoadingSpinner'
 
 export const PostDetails = () => {
   const { id } = useParams<{ id: string }>()
@@ -59,7 +60,7 @@ export const PostDetails = () => {
   if (loading)
     return (
       <PageWrapper>
-        <p>Loading...</p>
+        <LoadingSpinner />
       </PageWrapper>
     )
   if (!post) return null

@@ -1,24 +1,42 @@
 import { createContext, useReducer, useMemo } from 'react'
-import type { ReactNode } from 'react'
+
+import type { ReactNode, Dispatch } from 'react'
 import type { Category, Post } from '../types/Posts'
 
-export const PostContext = createContext({} as any)
+type Actions =
+  | { type: 'SET_POSTS'; payload: Post[] }
+  | { type: 'SET_ORDER' }
+  | {
+      type: 'SET_FILTERS'
+      payload: { categories: string[]; authors: string[] }
+    }
+  | { type: 'SET_LOADING'; payload: boolean }
 
-type Types = 'SET_POSTS' | 'SET_ORDER' | 'SET_FILTERS' | 'SET_LOADING'
-
-export type Actions = {
-  type: Types
-  payload?: any
+type PostState = {
+  allPosts: Post[]
+  loading: boolean
+  order: 'newest' | 'oldest'
+  selectedCategories: string[]
+  selectedAuthors: string[]
+  search: string
 }
 
-const reducer = (state: any, action: Actions) => {
+interface PostContextData {
+  state: PostState
+  dispatch: Dispatch<Actions>
+  filteredPosts: Post[]
+}
+
+// 3. Criando o contexto com a interface (removendo o any)
+export const PostContext = createContext<PostContextData>({} as PostContextData)
+
+const reducer = (state: PostState, action: Actions): PostState => {
   switch (action.type) {
     case 'SET_POSTS':
       return { ...state, allPosts: action.payload, loading: false }
     case 'SET_ORDER':
       return { ...state, order: state.order === 'newest' ? 'oldest' : 'newest' }
     case 'SET_FILTERS':
-      console.log('payload:', action.payload)
       return {
         ...state,
         selectedCategories: action.payload.categories,
@@ -33,15 +51,25 @@ const reducer = (state: any, action: Actions) => {
 
 export const PostProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, {
-    allPosts: [] as Post[],
+    allPosts: [],
     loading: true,
     order: 'newest',
-    selectedCategories: [] as string[],
-    selectedAuthors: [] as string[],
+    selectedCategories: [],
+    selectedAuthors: [],
+    search: '',
   })
 
   const filteredPosts = useMemo(() => {
     let result = [...state.allPosts]
+
+    if (state.search) {
+      const term = state.search.toLowerCase()
+      result = result.filter(
+        (post) =>
+          post.title.toLowerCase().includes(term) ||
+          post.content.toLowerCase().includes(term),
+      )
+    }
 
     if (state.selectedCategories.length > 0) {
       result = result.filter((post) =>
@@ -57,23 +85,12 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       )
     }
 
-    const sortedResult = [...result].sort((a, b) => {
+    return result.sort((a, b) => {
       const dateA = new Date(a.createdAt).getTime()
       const dateB = new Date(b.createdAt).getTime()
-
-      if (state.order === 'newest') {
-        return dateB - dateA
-      } else {
-        return dateA - dateB
-      }
+      return state.order === 'newest' ? dateB - dateA : dateA - dateB
     })
-    return sortedResult
-  }, [
-    state.allPosts,
-    state.order,
-    state.selectedCategories,
-    state.selectedAuthors,
-  ])
+  }, [state])
 
   return (
     <PostContext.Provider value={{ state, dispatch, filteredPosts }}>

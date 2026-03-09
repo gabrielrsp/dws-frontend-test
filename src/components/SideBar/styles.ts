@@ -22,7 +22,6 @@ export const SidebarHeader = styled.div`
   color: ${({ theme }) => theme.colors.primary.light};
 
   h2 {
-    /* Especificação de Título H3/H2 do guia [cite: 73, 74] */
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     font-weight: 700;
@@ -35,14 +34,11 @@ export const Section = styled.div`
   flex-direction: column;
 `
 
-export const SectionTitle = styled.h4`
-  font-family: 'Open Sans', sans-serif;
+export const SectionTitle = styled.h3`
   font-weight: 700;
   font-size: 14px;
   margin-bottom: 16px;
   color: ${({ theme }) => theme.colors.primary.dark};
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 `
 
 export const FilterItem = styled.button<{ active?: boolean }>`
@@ -51,7 +47,6 @@ export const FilterItem = styled.button<{ active?: boolean }>`
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.neutrals.extraLight};
   text-align: left;
-  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   cursor: pointer;
 
@@ -78,7 +73,6 @@ export const ApplyButton = styled.button`
   border-radius: 25px;
   border: none;
   background-color: ${({ theme }) => theme.colors.secondary.medium};
-  color: white;
 
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;

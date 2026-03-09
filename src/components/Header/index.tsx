@@ -6,14 +6,22 @@ export function Header() {
   return (
     <>
       <HeaderContainer>
-        <LogoContainer>
-          <img src={logoDentsu} alt="dentsu" width={80} />
-          <Text variant="caption">world services</Text>
-        </LogoContainer>
+        <Text
+          href="https://www.dentsu.com/?global=true"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LogoContainer>
+            <img src={logoDentsu} alt="dentsu" width={80} />
+            <Text variant="caption">world services</Text>
+          </LogoContainer>
+        </Text>
+
         <nav>
           <SearchInput />
         </nav>
       </HeaderContainer>
+
       <Divider />
     </>
   )

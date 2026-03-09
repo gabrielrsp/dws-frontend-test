@@ -10,7 +10,7 @@ import { Button } from '../Button'
 import { PostContext } from '../../contexts/PostContext'
 import { categoryService, authorService } from '../../services/postService'
 import type { Category, Author } from '../../types/Posts'
-
+import SlidersIcon from '../../assets/sliders.png'
 export const Sidebar = () => {
   const { dispatch } = useContext(PostContext)
 
@@ -22,7 +22,7 @@ export const Sidebar = () => {
   const [selectedAuthors, setSelectedAuthors] = useState<Author[]>([])
 
   useEffect(() => {
-    async function loadFilters () {
+    async function loadFilters() {
       try {
         setLoading(true)
         const [categoriesData, authorsData] = await Promise.all([
@@ -70,6 +70,8 @@ export const Sidebar = () => {
   return (
     <SidebarContainer>
       <SidebarHeader>
+        <img src={SlidersIcon} alt="Filters icon" width={20} />
+
         <h2>Filters</h2>
       </SidebarHeader>
 

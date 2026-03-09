@@ -1,13 +1,12 @@
-import { useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import type { Post } from '../../types/Posts'
 import { PostCard } from '../../components/PostCard'
-import { MOCK_POSTS } from '../../mocks/MockPosts'
+import { postService } from '../../services/postService' //
 
 import {
   PageWrapper,
   ArticleHeader,
-  MainTitle,
   AuthorInfo,
   MainImage,
   Content,
@@ -18,36 +17,70 @@ import {
 import { Button } from '../Button'
 
 export const PostDetails = () => {
+  const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const location = useLocation()
 
-  const { post } = location.state as { post: Post }
-
-  const posts = MOCK_POSTS
+  const [post, setPost] = useState<Post | null>(null)
+  const [latestPosts, setLatestPosts] = useState<Post[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [post.id])
+    async function loadPostData() {
+      if (!id) return
 
-  const handleBack = () => {
-    navigate('/')
-  }
+      try {
+        setLoading(true)
+        const [postData, allPosts] = await Promise.all([
+          postService.getById(id),
+          postService.getAll(),
+        ])
+
+        setPost(postData)
+        const filteredLatest = allPosts
+          .filter((p: Post) => p.id !== id)
+          .slice(0, 3)
+
+        setLatestPosts(filteredLatest)
+      } catch (error) {
+        console.error('Erro ao carregar post:', error)
+        navigate('/')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadPostData()
+    window.scrollTo(0, 0)
+  }, [id, navigate])
+
+  if (loading)
+    return (
+      <PageWrapper>
+        <p>Loading...</p>
+      </PageWrapper>
+    )
+  if (!post) return null
 
   return (
     <PageWrapper>
-      <Button variant="secondary" onClick={handleBack}>
+      <Button variant="secondary" onClick={() => navigate('/')}>
         Back
       </Button>
 
       <ArticleHeader>
-        <MainTitle>{post.title}</MainTitle>
+        <h1>{post.title}</h1>
 
         <AuthorInfo>
           <img src={post.author.profilePicture} alt={post.author.name} />
-
           <div>
             <strong>Written by: {post.author.name}</strong>
-            <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+            <span>
+              {new Date(post.createdAt).toLocaleDateString('en-US', {
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric',
+              })}
+            </span>
           </div>
         </AuthorInfo>
       </ArticleHeader>
@@ -62,10 +95,9 @@ export const PostDetails = () => {
 
       <LatestArticlesSection>
         <h3>Latest articles</h3>
-
         <Grid>
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
+          {latestPosts.map((latest) => (
+            <PostCard key={latest.id} post={latest} />
           ))}
         </Grid>
       </LatestArticlesSection>

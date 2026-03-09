@@ -13,12 +13,11 @@ export const DropdownButton = styled.button<DropdownButtonProps>`
   align-items: center;
   justify-content: space-between;
   gap: 4px;
-  
+
   width: auto;
   max-width: 150px;
   height: 32px;
-  padding: 0 12px 0 16px; 
-
+  padding: 0 12px 0 16px;
 
   background: ${(props) =>
     props.isOpen
@@ -27,7 +26,6 @@ export const DropdownButton = styled.button<DropdownButtonProps>`
   border: 1px solid ${(props) => props.theme.colors.secondary.medium};
   border-radius: 42px;
   color: ${(props) => props.theme.colors.secondary.medium};
-
 
   font-size: ${(props) => props.theme.typography.caption.fontSize};
   font-weight: 700;

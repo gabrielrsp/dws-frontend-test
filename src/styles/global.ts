@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 body {
-    background-color: #F8F9FB; 
+    background-color: #F0F0F2; 
     background-image:
       radial-gradient(at 80% 30%, rgba(255, 182, 219, 1) 0px, transparent 30%),
       radial-gradient(at 15% 65%, rgba(122, 245, 337, 0.4) 0px, transparent 40%),

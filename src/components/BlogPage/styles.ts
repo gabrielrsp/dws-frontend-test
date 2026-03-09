@@ -7,7 +7,7 @@ export const BlogPageContainer = styled.div`
   padding: 16px 0;
 
   @media (min-width: 768px) {
-    padding: 20px;
+    padding: 5px 20px 20px;
     gap: 20px;
   }
 `

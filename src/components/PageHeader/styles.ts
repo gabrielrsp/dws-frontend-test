@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const PageHeaderContainer = styled.div`
   display: flex;
-  padding: 8px 16px;
+  padding: 8px 16px 0px;
   background-color: transparent;
 `
 

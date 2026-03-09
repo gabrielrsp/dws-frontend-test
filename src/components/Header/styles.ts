@@ -29,7 +29,10 @@ export const LogoContainer = styled.div`
 
 type TextVariant = 'large' | 'small' | 'caption'
 
-export const Text = styled.span<{ variant?: TextVariant }>`
+export const Text = styled.a<{ variant?: TextVariant }>`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.neutrals.darkest};
+  cursor: pointer;
   ${({ theme, variant = 'large' }) => {
     const t = theme.typography[variant]
 

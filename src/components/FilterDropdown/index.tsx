@@ -11,7 +11,17 @@ interface Option {
   name: string
 }
 
-export function FilterDropdown ({ label, options, onSelectionChange }: any) {
+interface FilterDropdownProps {
+  label: string
+  options: Option[]
+  onSelectionChange?: (selectedIds: string[]) => void
+}
+
+export function FilterDropdown({
+  label,
+  options,
+  onSelectionChange,
+}: FilterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const dropdownRef = useRef<HTMLDivElement>(null)

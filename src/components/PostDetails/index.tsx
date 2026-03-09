@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import type { Post } from '../../types/Posts'
 import { PostCard } from '../../components/PostCard'
+import { Button } from '../Button'
+import { ArrowLeft } from '../../assets/ArrowLeft'
 import { postService } from '../../services/postService' //
 import { toast } from 'react-toastify'
 
@@ -14,8 +16,6 @@ import {
   LatestArticlesSection,
   Grid,
 } from './style'
-
-import { Button } from '../Button'
 
 export const PostDetails = () => {
   const { id } = useParams<{ id: string }>()
@@ -67,6 +67,7 @@ export const PostDetails = () => {
   return (
     <PageWrapper>
       <Button variant="secondary" onClick={() => navigate('/')}>
+        <ArrowLeft />
         Back
       </Button>
 

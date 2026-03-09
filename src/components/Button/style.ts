@@ -9,15 +9,13 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 48px; /* Ajustado para comportar o padding de 12px + linha de texto */
+  height: 48px;
   padding: 12px 24px;
   border-radius: 42px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   border: none;
 
-  /* Tipografia: Body/Large/600 */
-  font-family: 'Open Sans', sans-serif;
   font-size: ${(props) => props.theme.typography.large.fontSize};
   font-weight: 600;
   line-height: ${(props) => props.theme.typography.large.lineHeight};
@@ -39,7 +37,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       background-color: transparent;
       border: 1px solid ${props.theme.colors.secondary.medium};
       color: ${props.theme.colors.secondary.medium};
-      padding: 12px 16px; /* Padding lateral menor conforme imagem */
+      padding: 12px 16px;
 
       &:hover {
         border-color: ${props.theme.colors.secondary.dark};

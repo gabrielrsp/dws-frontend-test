@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import {
   SidebarContainer,
   SidebarHeader,
@@ -7,19 +7,13 @@ import {
   FilterItem,
 } from './styles'
 import { Button } from '../Button'
+import { PostContext } from '../../contexts/PostContext'
 import { categoryService, authorService } from '../../services/postService'
-
-interface Category {
-  id: string
-  name: string
-}
-
-interface Author {
-  id: string
-  name: string
-}
+import type { Category, Author } from '../../types/Posts'
 
 export const Sidebar = () => {
+  const { dispatch } = useContext(PostContext)
+
   const [categories, setCategories] = useState<Category[]>([])
   const [authors, setAuthors] = useState<Author[]>([])
   const [loading, setLoading] = useState(true)
@@ -28,7 +22,7 @@ export const Sidebar = () => {
   const [selectedAuthors, setSelectedAuthors] = useState<string[]>([])
 
   useEffect(() => {
-    async function loadFilters () {
+    async function loadFilters() {
       try {
         setLoading(true)
         const [categoriesData, authorsData] = await Promise.all([
@@ -56,6 +50,16 @@ export const Sidebar = () => {
     )
   }
 
+  const handleApplyFilters = () => {
+    dispatch({
+      type: 'SET_FILTERS',
+      payload: {
+        categories: selectedCategories,
+        authors: selectedAuthors,
+      },
+    })
+  }
+
   if (loading)
     return (
       <SidebarContainer>
@@ -71,20 +75,20 @@ export const Sidebar = () => {
 
       <Section>
         <SectionTitle>Category</SectionTitle>
-        {categories.map((cat) => (
+        {categories.map((category: Category) => (
           <FilterItem
-            key={cat.id}
-            active={selectedCategories.includes(cat.id)}
-            onClick={() => toggleFilter(cat.id, setSelectedCategories)}
+            key={category.id}
+            active={selectedCategories.includes(category.id)}
+            onClick={() => toggleFilter(category.id, setSelectedCategories)}
           >
-            {cat.name}
+            {category.name}
           </FilterItem>
         ))}
       </Section>
 
       <Section>
         <SectionTitle>Author</SectionTitle>
-        {authors.map((author) => (
+        {authors.map((author: Author) => (
           <FilterItem
             key={author.id}
             active={selectedAuthors.includes(author.id)}
@@ -95,10 +99,7 @@ export const Sidebar = () => {
         ))}
       </Section>
 
-      <Button
-        variant="primary"
-        onClick={() => console.log({ selectedCategories, selectedAuthors })}
-      >
+      <Button variant="primary" onClick={handleApplyFilters}>
         Apply filters
       </Button>
     </SidebarContainer>

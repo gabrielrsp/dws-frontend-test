@@ -1,75 +1,57 @@
-# React + TypeScript + Vite
+# 🚀 DWS Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance blog application built with **React 19**, **Vite**, and **TypeScript**. This project showcases expertise in React development, state management, responsive UI, backend integration, and component styling, with a strong focus on maintainable code and robust automated testing.
 
-Currently, two official plugins are available:
+## 🛠️ Technologies & Libraries
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Core:** [React 19](https://react.dev/) & [Vite](https://vitejs.dev/)
+- **Styling:** [Styled Components](https://styled-components.com/) (CSS-in-JS)
+- **Routing:** [React Router Dom v7](https://reactrouter.com/)
+- **API Client:** [Axios](https://axios-http.com/)
+- **Notifications:** [React Toastify](https://fkhadra.github.io/react-toastify/)
+- **Testing:** [Vitest](https://vitest.dev/) & [React Testing Library](https://testing-library.com/)
 
-## React Compiler
+---
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 📂 Project Structure
 
-Note: This will impact Vite dev & build performances.
+The project follows a clear separation of concerns to ensure maintainability and scalability:
 
-## Expanding the ESLint configuration
+- **src/components:** Reusable UI components (Buttons, Cards, Spinners, PageHeader, etc.).  
+- **src/layouts:** Page-level compositions (BlogPage, PostDetails) combining components into views.  
+- **src/pages:** Top-level pages that wrap layouts for routing (PostPage, PostsList).  
+- **src/contexts:** Global state management using Context API and useReducer.  
+- **src/services:** API abstraction with Axios for backend integration.  
+- **src/mocks:** Static data for consistent development and testing.  
+- **src/types:** TypeScript interfaces and type definitions.  
+- **src/styles:** Theme definitions and global styles (`default.ts` and `global.ts`) for consistent styling across the application.  
+- **src/assets:** Static assets such as logos, SVGs, and PNG icons.  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ⚙️ How to Run the Project
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Follow these steps to set up and run the application locally:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Prerequisites
+Ensure you have **Node.js** (version 18 or higher) installed on your machine.
+
+### 2. Installation
+Clone the repository and install the dependencies:
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3. Execution
+To start the development server on port 5173, run:
+```bash
+npm run dev
 ```
+The application will be available at: http://localhost:5173
+
+### 3. Tests
+The project includes a comprehensive test suite covering UI components, global state logic (Context API), and asynchronous data fetching.
+```bash
+npm run test
+```
+The application will be available at: http://localhost:5173

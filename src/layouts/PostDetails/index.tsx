@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import type { Post } from '../../types/Posts'
 import { PostCard } from '../../components/PostCard'
-import { Button } from '../Button'
+import { Button } from '../../components/Button'
 import { ArrowLeft } from '../../assets/ArrowLeft'
 import { postService } from '../../services/postService' //
 import { toast } from 'react-toastify'
@@ -16,7 +16,7 @@ import {
   LatestArticlesSection,
   Grid,
 } from './style'
-import { LoadingSpinner } from '../LoadingSpinner'
+import { LoadingSpinner } from '../../components/LoadingSpinner'
 
 export const PostDetails = () => {
   const { id } = useParams<{ id: string }>()

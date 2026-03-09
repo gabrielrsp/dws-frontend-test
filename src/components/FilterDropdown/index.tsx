@@ -11,7 +11,7 @@ interface Option {
   name: string
 }
 
-interface FilterDropdownProps {
+export interface FilterDropdownProps {
   label: string
   options: Option[]
   onSelectionChange?: (selectedIds: string[]) => void

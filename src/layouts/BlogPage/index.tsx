@@ -1,5 +1,5 @@
-import { Sidebar } from '../SideBar'
-import { CardsContainer } from '../CardsContainer'
+import { CardsContainer } from '../../components/CardsContainer'
+import { Sidebar } from '../../components/Sidebar'
 import { BlogPageContainer } from './styles'
 
 export const BlogPage = () => {

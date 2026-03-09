@@ -1,4 +1,4 @@
-import { PostDetails } from '../components/PostDetails'
+import { PostDetails } from '../layouts/PostDetails'
 
 export function PostPage() {
   return <PostDetails />

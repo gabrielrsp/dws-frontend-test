@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { PostsList } from './pages/PostsList'
 import { PostPage } from './pages/PostPage'
-import { DefaultLayout } from './layouts/DefaultLayout'
+import { DefaultLayout } from './layouts/DefaultLayout/DefaultLayout'
 import { PostProvider } from './contexts/PostContext'
 
 export function Router() {

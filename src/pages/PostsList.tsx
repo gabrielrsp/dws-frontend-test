@@ -1,5 +1,5 @@
 import { PageHeader } from '../components/PageHeader'
-import { BlogPage } from '../components/BlogPage'
+import { BlogPage } from '../layouts/BlogPage'
 import { PostsListContainer } from './styles'
 
 export function PostsList() {

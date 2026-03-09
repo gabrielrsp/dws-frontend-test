@@ -27,7 +27,6 @@ interface PostContextData {
   filteredPosts: Post[]
 }
 
-// 3. Criando o contexto com a interface (removendo o any)
 export const PostContext = createContext<PostContextData>({} as PostContextData)
 
 const reducer = (state: PostState, action: Actions): PostState => {

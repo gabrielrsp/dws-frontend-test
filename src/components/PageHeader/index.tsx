@@ -10,6 +10,7 @@ import { FilterDropdown } from '../FilterDropdown'
 import { PostContext } from '../../contexts/PostContext'
 import { categoryService, authorService } from '../../services/postService'
 import type { Category, Author } from '../../types/Posts'
+import { toast } from 'react-toastify'
 
 export function PageHeader() {
   const { state, dispatch } = useContext(PostContext)
@@ -26,8 +27,11 @@ export function PageHeader() {
         ])
         setCategories(categoriesData)
         setAuthors(authorsData)
-      } catch (error) {
-        console.error('Erro ao carregar filtros no Header:', error)
+      } catch {
+        toast.error('Failed on fetching header filters', {
+          position: 'top-right',
+          autoClose: 3000,
+        })
       }
     }
     loadFilters()

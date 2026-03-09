@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/default'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
+import { ToastContainer } from 'react-toastify'
 
 export function App() {
   return (
@@ -12,6 +13,7 @@ export function App() {
           <Router />
         </BrowserRouter>
         <GlobalStyle />
+        <ToastContainer />
       </ThemeProvider>
     </>
   )

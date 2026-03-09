@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import type { Post } from '../../types/Posts'
 import { PostCard } from '../../components/PostCard'
 import { postService } from '../../services/postService' //
+import { toast } from 'react-toastify'
 
 import {
   PageWrapper,
@@ -41,9 +42,11 @@ export const PostDetails = () => {
           .slice(0, 3)
 
         setLatestPosts(filteredLatest)
-      } catch (error) {
-        console.error('Erro ao carregar post:', error)
-        navigate('/')
+      } catch {
+        toast.error('Failed to load post', {
+          position: 'top-right',
+          autoClose: 3000,
+        })
       } finally {
         setLoading(false)
       }

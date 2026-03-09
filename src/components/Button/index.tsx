@@ -1,9 +1,9 @@
-import React, { ButtonHTMLAttributes } from 'react'
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { ButtonContainer } from './style'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary'
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export const Button = ({

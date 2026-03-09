@@ -11,6 +11,8 @@ import { PostContext } from '../../contexts/PostContext'
 import { categoryService, authorService } from '../../services/postService'
 import type { Category, Author } from '../../types/Posts'
 import SlidersIcon from '../../assets/sliders.png'
+import { toast } from 'react-toastify'
+
 export const Sidebar = () => {
   const { dispatch } = useContext(PostContext)
 
@@ -31,8 +33,11 @@ export const Sidebar = () => {
         ])
         setCategories(categoriesData)
         setAuthors(authorsData)
-      } catch (error) {
-        console.error('Erro ao carregar filtros:', error)
+      } catch {
+        toast.error('Failed on fetching header filters', {
+          position: 'top-right',
+          autoClose: 3000,
+        })
       } finally {
         setLoading(false)
       }

@@ -4,6 +4,7 @@ import { CardsWrapper, Grid } from './styles'
 import { PostCard } from '../PostCard'
 import { postService } from '../../services/postService'
 import type { Post } from '../../types/Posts'
+import { toast } from 'react-toastify'
 
 export function CardsContainer() {
   const { state, dispatch, filteredPosts } = useContext(PostContext)
@@ -17,8 +18,11 @@ export function CardsContainer() {
         const data = await postService.getAll()
 
         dispatch({ type: 'SET_POSTS', payload: data })
-      } catch (error) {
-        console.error('Erro ao buscar posts:', error)
+      } catch {
+        toast.error('Failed on fetching posts:', {
+          position: 'top-right',
+          autoClose: 3000,
+        })
         dispatch({ type: 'SET_LOADING', payload: false })
       }
     }

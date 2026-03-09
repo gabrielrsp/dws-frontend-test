@@ -22,7 +22,6 @@ export const SidebarHeader = styled.div`
   color: ${({ theme }) => theme.colors.primary.light};
 
   h2 {
-    font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 130%;
@@ -73,8 +72,6 @@ export const ApplyButton = styled.button`
   border-radius: 25px;
   border: none;
   background-color: ${({ theme }) => theme.colors.secondary.medium};
-
-  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;

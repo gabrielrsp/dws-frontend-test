@@ -24,12 +24,12 @@ export const Sidebar = () => {
   const [selectedAuthors, setSelectedAuthors] = useState<Author[]>([])
 
   useEffect(() => {
-    async function loadFilters() {
+    async function loadFilters () {
       try {
         setLoading(true)
         const [categoriesData, authorsData] = await Promise.all([
-          categoryService.getAll(),
-          authorService.getAll(),
+          categoryService.getAllCategories(),
+          authorService.getAllAuthors(),
         ])
         setCategories(categoriesData)
         setAuthors(authorsData)

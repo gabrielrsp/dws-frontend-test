@@ -10,7 +10,7 @@ vi.mock('../../services/postService')
 
 const dispatchMock = vi.fn()
 
-function renderComponent() {
+function renderComponent () {
   return render(
     <ThemeProvider theme={defaultTheme}>
       <PostContext.Provider value={{ dispatch: dispatchMock }}>
@@ -28,11 +28,11 @@ describe('Sidebar', () => {
   })
 
   it('should render filters after fetch', async () => {
-    vi.mocked(categoryService.getAll).mockResolvedValue([
+    vi.mocked(categoryService.getAllCategories).mockResolvedValue([
       { id: '1', name: 'Tech' },
     ])
 
-    vi.mocked(authorService.getAll).mockResolvedValue([
+    vi.mocked(authorService.getAllAuthors).mockResolvedValue([
       { id: '1', name: 'John' },
     ])
 

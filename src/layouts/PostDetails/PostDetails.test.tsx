@@ -22,7 +22,7 @@ vi.mock('react-toastify', () => ({
   },
 }))
 
-function renderComponent() {
+function renderComponent () {
   return render(
     <ThemeProvider theme={defaultTheme}>
       <MemoryRouter
@@ -39,8 +39,8 @@ function renderComponent() {
 describe('PostDetails', () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    vi.mocked(postService.getById).mockResolvedValue(MOCK_POST_DETAILS)
-    vi.mocked(postService.getAll).mockResolvedValue(MOCK_POSTS)
+    vi.mocked(postService.getPostById).mockResolvedValue(MOCK_POST_DETAILS)
+    vi.mocked(postService.getAllPosts).mockResolvedValue(MOCK_POSTS)
   })
 
   it('should load and render post data correctly', async () => {
@@ -72,7 +72,7 @@ describe('PostDetails', () => {
   })
 
   it('should show toast error when request fails', async () => {
-    vi.mocked(postService.getById).mockRejectedValue(new Error('API Error'))
+    vi.mocked(postService.getPostById).mockRejectedValue(new Error('API Error'))
 
     renderComponent()
 

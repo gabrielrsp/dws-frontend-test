@@ -7,16 +7,16 @@ import type { Post } from '../../types/Posts'
 import { toast } from 'react-toastify'
 import { LoadingSpinner } from '../LoadingSpinner'
 
-export function CardsContainer() {
+export function CardsContainer () {
   const { state, dispatch, filteredPosts } = useContext(PostContext)
 
   useEffect(() => {
-    async function fetchPosts() {
+    async function fetchPosts () {
       if (state.allPosts.length > 0) return
 
       try {
         dispatch({ type: 'SET_LOADING', payload: true })
-        const data = await postService.getAll()
+        const data = await postService.getAllPosts()
 
         dispatch({ type: 'SET_POSTS', payload: data })
       } catch {

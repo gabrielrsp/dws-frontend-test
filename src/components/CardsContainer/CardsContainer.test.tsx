@@ -37,7 +37,7 @@ describe('CardsContainer', () => {
   })
 
   it('should show loading spinner initially and then the posts', async () => {
-    vi.mocked(postService.getAll).mockResolvedValue(MOCK_POSTS)
+    vi.mocked(postService.getAllPosts).mockResolvedValue(MOCK_POSTS)
 
     renderWithProviders(<CardsContainer />)
 
@@ -49,7 +49,7 @@ describe('CardsContainer', () => {
   })
 
   it('should show empty state message when no posts are returned', async () => {
-    vi.mocked(postService.getAll).mockResolvedValue([])
+    vi.mocked(postService.getAllPosts).mockResolvedValue([])
 
     renderWithProviders(<CardsContainer />)
 

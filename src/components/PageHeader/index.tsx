@@ -12,18 +12,18 @@ import { categoryService, authorService } from '../../services/postService'
 import type { Category, Author } from '../../types/Posts'
 import { toast } from 'react-toastify'
 
-export function PageHeader() {
+export function PageHeader () {
   const { state, dispatch } = useContext(PostContext)
 
   const [categories, setCategories] = useState<Category[]>([])
   const [authors, setAuthors] = useState<Author[]>([])
 
   useEffect(() => {
-    async function loadFilters() {
+    async function loadFilters () {
       try {
         const [categoriesData, authorsData] = await Promise.all([
-          categoryService.getAll(),
-          authorService.getAll(),
+          categoryService.getAllCategories(),
+          authorService.getAllAuthors(),
         ])
         setCategories(categoriesData)
         setAuthors(authorsData)

@@ -17,7 +17,7 @@ vi.mock('../../services/postService', () => ({
 
 const dispatchMock = vi.fn()
 
-function renderComponent() {
+function renderComponent () {
   return render(
     <ThemeProvider theme={defaultTheme}>
       <PostContext.Provider
@@ -44,15 +44,15 @@ describe('PageHeader', () => {
   })
 
   it('should fetch categories and authors on mount', async () => {
-    categoryService.getAll.mockResolvedValue([{ id: '1', name: 'Tech' }])
+    categoryService.getAllCategories.mockResolvedValue([{ id: '1', name: 'Tech' }])
 
-    authorService.getAll.mockResolvedValue([{ id: '1', name: 'John' }])
+    authorService.getAllAuthors.mockResolvedValue([{ id: '1', name: 'John' }])
 
     renderComponent()
 
     await waitFor(() => {
-      expect(categoryService.getAll).toHaveBeenCalled()
-      expect(authorService.getAll).toHaveBeenCalled()
+      expect(categoryService.getAllCategories).toHaveBeenCalled()
+      expect(authorService.getAllAuthors).toHaveBeenCalled()
     })
   })
 })

@@ -27,14 +27,14 @@ export const PostDetails = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    async function loadPostData() {
+    async function loadPostData () {
       if (!id) return
 
       try {
         setLoading(true)
         const [postData, allPosts] = await Promise.all([
-          postService.getById(id),
-          postService.getAll(),
+          postService.getPostById(id),
+          postService.getAllPosts(),
         ])
 
         setPost(postData)

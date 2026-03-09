@@ -1,14 +1,13 @@
 import { useContext } from 'react'
-import { PostContext } from '../../contexts/PostContext' // Ajuste o caminho se necessário
+import { PostContext } from '../../contexts/PostContext'
 import { SortContainer, SortButton, SortText } from './styles'
 import { SortIcon } from '../../assets/SortIcon'
 
-export function SortBy() {
+export function SortBy () {
   const { state, dispatch } = useContext(PostContext)
 
   const handleSortToggle = () => {
     dispatch({ type: 'SET_ORDER' })
-    console.log('state:', state)
   }
 
   return (

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const CardContainer = styled.div`
   background: ${({ theme }) =>
-    theme.colors.neutrals.lightest}; // Fundo quase branco
+    theme.colors.neutrals.lightest}; 
   border-radius: 16px;
   overflow: hidden;
   display: flex;

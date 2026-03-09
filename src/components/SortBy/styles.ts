@@ -47,7 +47,7 @@ export const SortButton = styled.button`
     }
 
     svg {
-      color: ${({ theme }) => theme.colors.neutrals.extraLight}; // hover
+      color: ${({ theme }) => theme.colors.neutrals.extraLight}; 
     }
   }
 `

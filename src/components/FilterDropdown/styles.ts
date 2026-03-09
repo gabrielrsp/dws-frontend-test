@@ -12,34 +12,41 @@ export const DropdownButton = styled.button<DropdownButtonProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: auto;
-  height: 32px;
-  padding: 12px 12px 12px 16px;
   gap: 4px;
+  
+  width: auto;
+  max-width: 150px;
+  height: 32px;
+  padding: 0 12px 0 16px; 
+
 
   background: ${(props) =>
     props.isOpen
       ? `${props.theme.colors.secondary.medium}0D`
       : props.theme.colors.neutrals.lightest};
-
   border: 1px solid ${(props) => props.theme.colors.secondary.medium};
   border-radius: 42px;
-
   color: ${(props) => props.theme.colors.secondary.medium};
+
+
   font-size: ${(props) => props.theme.typography.caption.fontSize};
   font-weight: 700;
   line-height: ${(props) => props.theme.typography.caption.lineHeight};
 
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     background: ${(props) => props.theme.colors.secondary.medium}0D;
   }
 
   span {
+    flex: 1;
+    display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: left;
   }
 `
 
@@ -70,23 +77,17 @@ export const DropdownMenu = styled.ul`
   gap: 8px;
 `
 
-export const MenuItem = styled.li`
-  padding: 4px 0px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-
-  font-size: ${(props) => props.theme.typography.small.fontSize};
-  font-weight: ${(props) => props.theme.typography.small.fontWeight};
-  color: ${(props) => props.theme.colors.neutrals.darkest};
-  line-height: ${(props) => props.theme.typography.small.lineHeight};
-
+export const MenuItem = styled.button<{ selected: boolean }>`
+  padding: 8px 12px;
+  width: 100%;
+  text-align: left;
+  border: none;
   cursor: pointer;
-  transition: color 0.2s ease;
+
+  background: ${({ selected, theme }) =>
+    selected ? `${theme.colors.secondary.medium}0D` : 'transparent'};
 
   &:hover {
-    background: ${(props) => props.theme.colors.secondary.medium}0D;
-    color: ${(props) => props.theme.colors.secondary.medium};
+    background: ${({ theme }) => `${theme.colors.secondary.medium}0D`};
   }
 `

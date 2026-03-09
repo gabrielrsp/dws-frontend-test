@@ -18,6 +18,7 @@ const reducer = (state: any, action: Actions) => {
     case 'SET_ORDER':
       return { ...state, order: state.order === 'newest' ? 'oldest' : 'newest' }
     case 'SET_FILTERS':
+      console.log('payload:', action.payload)
       return {
         ...state,
         selectedCategories: action.payload.categories,
@@ -56,7 +57,6 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
       )
     }
 
-    console.log(state.order)
     const sortedResult = [...result].sort((a, b) => {
       const dateA = new Date(a.createdAt).getTime()
       const dateB = new Date(b.createdAt).getTime()
@@ -67,7 +67,6 @@ export const PostProvider = ({ children }: { children: ReactNode }) => {
         return dateA - dateB
       }
     })
-    console.log(sortedResult)
     return sortedResult
   }, [
     state.allPosts,

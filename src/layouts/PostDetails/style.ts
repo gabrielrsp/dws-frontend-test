@@ -83,16 +83,14 @@ export const LatestArticlesSection = styled.section`
 
 export const Grid = styled.div`
   display: grid;
-  /* Define exatamente 3 colunas de tamanhos iguais */
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 
-  /* Ajuste para tablets: 2 colunas */
   @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Ajuste para mobile: 1 coluna */
+
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
   }

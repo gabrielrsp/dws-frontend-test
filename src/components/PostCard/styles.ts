@@ -52,7 +52,6 @@ export const Title = styled.h3`
   font-weight: 700;
   line-height: 1.3;
   margin: 0;
-  /* Limita a 2 linhas como no print */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -64,7 +63,6 @@ export const Excerpt = styled.p`
   font-size: ${({ theme }) => theme.typography.small.fontSize};
   line-height: ${({ theme }) => theme.typography.small.lineHeight};
   margin: 0;
-  /* Limita a 3 linhas */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

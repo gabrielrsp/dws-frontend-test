@@ -8,10 +8,10 @@ import { categoryService, authorService } from '../../services/postService'
 
 vi.mock('../../services/postService', () => ({
   categoryService: {
-    getAll: vi.fn(),
+    getAllCategories: vi.fn(),
   },
   authorService: {
-    getAll: vi.fn(),
+    getAllAuthors: vi.fn(),
   },
 }))
 
@@ -44,7 +44,9 @@ describe('PageHeader', () => {
   })
 
   it('should fetch categories and authors on mount', async () => {
-    categoryService.getAllCategories.mockResolvedValue([{ id: '1', name: 'Tech' }])
+    categoryService.getAllCategories.mockResolvedValue([
+      { id: '1', name: 'Tech' },
+    ])
 
     authorService.getAllAuthors.mockResolvedValue([{ id: '1', name: 'John' }])
 

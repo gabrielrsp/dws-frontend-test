@@ -11,8 +11,8 @@ import { MOCK_POST_DETAILS } from '../../mocks/MockPostDetails'
 
 vi.mock('../../services/postService', () => ({
   postService: {
-    getAll: vi.fn(),
-    getById: vi.fn(),
+    getAllPosts: vi.fn(),
+    getPostById: vi.fn(),
   },
 }))
 
